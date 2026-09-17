@@ -6,6 +6,7 @@ import { FileCode2, Menu, X, FileDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/Container";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { ResumeViewer } from "@/components/ui/ResumeViewer";
 import { useActiveSection } from "@/lib/hooks/useActiveSection";
 import { useScrolled } from "@/lib/hooks/useScrolled";
 import { NAV_SECTIONS, cn } from "@/lib/utils";
@@ -15,6 +16,7 @@ const SECTION_IDS = NAV_SECTIONS.map((s) => s.id);
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
   const scrolled = useScrolled();
   const activeId = useActiveSection(SECTION_IDS);
 
@@ -100,13 +102,14 @@ export function Navbar() {
             >
               <FileCode2 size={16} strokeWidth={1.75} />
             </a>
-            <a 
-              href={personal.resumePath}
-              className="ml-2 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-foreground transition-colors hover:border-accent/40 hover:text-accent" 
+            <button
+              type="button"
+              onClick={() => setResumeOpen(true)}
+              className="ml-2 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-foreground transition-colors hover:border-accent/40 hover:text-accent"
             >
               <FileDown size={14} strokeWidth={1.75} />
               Resume
-            </a>
+            </button>
             <div className="ml-1">
               <ThemeToggle />
             </div>
@@ -173,17 +176,25 @@ export function Navbar() {
               >
                 <FileCode2 size={16} strokeWidth={1.75} />
               </a>
-              <a 
-                href={personal.resumePath}
-                className="ml-auto inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-foreground" 
+              <button
+                type="button"
+                onClick={() => {
+                setResumeOpen(true);
+                setOpen(false);
+                }}
+                className="ml-auto inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-foreground"
               >
                 <FileDown size={14} strokeWidth={1.75} />
                 Resume
-              </a>
+              </button>
             </div>
           </Container>
         </div>
       )}
+      <ResumeViewer
+        open={resumeOpen}
+        onClose={() => setResumeOpen(false)}
+      />
     </header>
   );
 }

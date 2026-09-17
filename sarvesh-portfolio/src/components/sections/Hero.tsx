@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { useState } from "react";
 import { ArrowRight, FileDown } from "lucide-react";
 import { GithubIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/Container";
+
+import { ResumeViewer } from "@/components/ui/ResumeViewer";
 
 import { personal } from "@/lib/data/personal";
 import { experience } from "@/lib/data/experience";
@@ -14,6 +19,7 @@ function rise(ms: number) {
 }
 
 export function Hero() {
+  const [resumeOpen, setResumeOpen] = useState(false);
   return (
     <section id="top" className="pt-32 pb-20 sm:pt-40 sm:pb-24 lg:pt-44 lg:pb-28">
       <Container>
@@ -54,13 +60,14 @@ export function Hero() {
               View projects
               <ArrowRight size={15} strokeWidth={2} />
             </Link>
-            <a 
-              href={personal.resumePath}
-              className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:text-accent" 
+            <button
+            type="button"
+            onClick={() => setResumeOpen(true)}
+            className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:text-accent"
             >
               <FileDown size={15} strokeWidth={1.75} />
               Resume
-            </a>
+            </button>
             <a
               href={personal.social.github}
               target="_blank"
@@ -82,7 +89,13 @@ export function Hero() {
             </p>
           </div>
         </div> 
-      </Container>
+        </Container>
+
+      <ResumeViewer
+        open={resumeOpen}
+        onClose={() => setResumeOpen(false)}
+      />
     </section>
   );
 }
+
