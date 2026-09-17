@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { ArrowRight, FileDown } from "lucide-react";
 import { GithubIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/Container";
-import { Terminal } from "@/components/ui/Terminal";
+
 import { personal } from "@/lib/data/personal";
 import { experience } from "@/lib/data/experience";
 
@@ -16,7 +16,7 @@ function rise(ms: number) {
 export function Hero() {
   return (
     <section id="top" className="pt-32 pb-20 sm:pt-40 sm:pb-24 lg:pt-44 lg:pb-28">
-      <Container className="grid items-start gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+      <Container>
         <div>
           <h1
             className="animate-rise text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]"
@@ -54,10 +54,9 @@ export function Hero() {
               View projects
               <ArrowRight size={15} strokeWidth={2} />
             </Link>
-            <a
+            <a 
               href={personal.resumePath}
-              download
-              className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:text-accent"
+              className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm font-medium text-foreground transition-colors hover:border-accent/40 hover:text-accent" 
             >
               <FileDown size={15} strokeWidth={1.75} />
               Resume
@@ -82,11 +81,7 @@ export function Hero() {
               <span className="ml-3 font-mono text-xs whitespace-nowrap">{latestRole.period}</span>
             </p>
           </div>
-        </div>
-
-        <div className="animate-rise lg:justify-self-end lg:pt-2" style={rise(200)}>
-          <Terminal />
-        </div>
+        </div> 
       </Container>
     </section>
   );

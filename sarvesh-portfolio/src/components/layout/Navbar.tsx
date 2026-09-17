@@ -100,10 +100,9 @@ export function Navbar() {
             >
               <FileCode2 size={16} strokeWidth={1.75} />
             </a>
-            <a
+            <a 
               href={personal.resumePath}
-              download
-              className="ml-2 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-foreground transition-colors hover:border-accent/40 hover:text-accent"
+              className="ml-2 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-sm text-foreground transition-colors hover:border-accent/40 hover:text-accent" 
             >
               <FileDown size={14} strokeWidth={1.75} />
               Resume
@@ -174,10 +173,9 @@ export function Navbar() {
               >
                 <FileCode2 size={16} strokeWidth={1.75} />
               </a>
-              <a
+              <a 
                 href={personal.resumePath}
-                download
-                className="ml-auto inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-foreground"
+                className="ml-auto inline-flex items-center gap-1.5 rounded-md bg-accent px-3 py-2 text-sm font-medium text-accent-foreground" 
               >
                 <FileDown size={14} strokeWidth={1.75} />
                 Resume
