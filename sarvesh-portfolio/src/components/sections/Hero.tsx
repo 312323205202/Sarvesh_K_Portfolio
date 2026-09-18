@@ -53,13 +53,13 @@ export function Hero() {
             className="animate-rise mt-8 flex flex-wrap items-center gap-3"
             style={rise(240)}
           >
-            <Link
+            <a
               href="#projects"
               className="inline-flex h-10 items-center gap-2 rounded-md bg-accent px-4 text-sm font-medium text-accent-foreground transition-[transform,opacity] hover:-translate-y-px hover:opacity-90"
             >
-              View projects
-              <ArrowRight size={15} strokeWidth={2} />
-            </Link>
+            View projects
+            <ArrowRight size={15} strokeWidth={2} />
+            </a>
             <button
             type="button"
             onClick={() => setResumeOpen(true)}
