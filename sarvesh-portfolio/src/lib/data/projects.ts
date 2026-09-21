@@ -54,8 +54,8 @@ export const projects: Project[] = [
       implementation:
         "Analytical queries use CTEs and window functions (RANK, LAG) for ranking and trend analysis. Indexes and views cover the common access paths, and EXPLAIN ANALYZE was used to check plans and confirm that indexing decisions actually changed execution.",
     },
-    github: GITHUB_PROFILE,
-    githubIsProfile: true,
+    github:"https://github.com/312323205202/CineMatch",
+    githubIsProfile: false,
   },
   {
     slug: "ai-interview-prep",
@@ -129,8 +129,9 @@ export const projects: Project[] = [
       implementation:
         "Stages run in sequence — parse, extract, match, rank — producing an automated first-pass evaluation and an ordered candidate list for a given job description.",
     },
-    github: GITHUB_PROFILE,
-    githubIsProfile: true,
+    github: "https://github.com/312323205202/ai-resume-screening-system",
+    githubIsProfile: false,
+
   },
   {
     slug: "gmail-whatsapp-automation",
@@ -168,7 +169,7 @@ export const projects: Project[] = [
       implementation:
         "Two external APIs are integrated end to end — Gmail for retrieval, Twilio for delivery — with the classification step in between acting as the gate on what gets forwarded.",
     },
-    github: GITHUB_PROFILE,
-    githubIsProfile: true,
+    github: "https://github.com/312323205202/gmail-ai-whatsapp-v2",
+    githubIsProfile: false,
   },
 ];

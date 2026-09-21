@@ -2,6 +2,7 @@
 
 import { X } from "lucide-react";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 
 type ResumeViewerProps = {
   open: boolean;
@@ -29,10 +30,13 @@ export function ResumeViewer({ open, onClose }: ResumeViewerProps) {
     };
   }, [open, onClose]);
 
-  if (!open) return null;
+  if (!open || typeof document === "undefined") {
+    return null;
+  }
 
-  return (
-    <div className="fixed inset-0 z-[100] flex flex-col bg-background">
+  return createPortal(
+    <div className="fixed inset-0 z-[9999] flex flex-col bg-neutral-900">
+      {/* Viewer header */}
       <div className="flex h-16 shrink-0 items-center justify-between border-b border-border bg-background px-4 sm:px-6">
         <div>
           <p className="text-sm font-medium text-foreground">
@@ -53,13 +57,31 @@ export function ResumeViewer({ open, onClose }: ResumeViewerProps) {
         </button>
       </div>
 
-      <div className="min-h-0 flex-1 bg-neutral-900">
-        <iframe
-          src="/Sarvesh-Karthik-Resume.pdf"
-          title="Sarvesh Karthik Resume"
-          className="h-full w-full border-0"
-        />
+      {/* PDF viewer */}
+      <div className="min-h-0 flex-1 overflow-hidden">
+        <object
+          data="/Sarvesh-Karthik-Resume.pdf"
+          type="application/pdf"
+          className="h-full w-full"
+          aria-label="Sarvesh Karthik Resume"
+        >
+          <div className="flex h-full items-center justify-center p-6 text-center">
+            <div>
+              <p className="text-sm text-white">
+                Your browser cannot display this PDF here.
+              </p>
+
+              <a
+                href="/Sarvesh-Karthik-Resume.pdf"
+                className="mt-4 inline-flex rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground"
+              >
+                Open Resume
+              </a>
+            </div>
+          </div>
+        </object>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
